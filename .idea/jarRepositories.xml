@@ -16,5 +16,10 @@
       <option name="name" value="MavenRepo" />
       <option name="url" value="https://repo.maven.apache.org/maven2/" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven" />
+      <option name="name" value="maven" />
+      <option name="url" value="http://redshift-maven-repository.s3-website-us-east-1.amazonaws.com/release" />
+    </remote-repository>
   </component>
 </project>
