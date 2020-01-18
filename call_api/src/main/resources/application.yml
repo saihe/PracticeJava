@@ -1,0 +1,19 @@
+logging:
+  level:
+    org:
+      springframework: INFO
+
+
+visa:
+  baseUrl: https://sandbox.api.visa.com
+  keyStorePath: /Users/saito/Downloads/VisaDirect/ssl/transfer_direct.p12
+  keyStorePassword: Password123
+  privateKeyPassword: Password123
+  trustStorePath: /Users/saito/Downloads/VisaDirect/ssl/transfer_direct.jks
+  trustStorePassword: Password123
+  userId: QJAFHXHHI6RRZXL3J00H21C429jpY8ApbbRCIbnvZt-6mkOvw
+  password: QjW2fuo14beH9hQJOuD8T
+#  userId: saito@fubright.co.jp
+#  password: Fbcks3141!
+lams:
+  baseUrl: https://lams-lbn.com

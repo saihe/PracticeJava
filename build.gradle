@@ -58,6 +58,6 @@ subprojects {
         compile group: 'commons-io', name: 'commons-io', version: '2.6'
         compile group: 'org.yaml', name: 'snakeyaml', version: '1.18'
         compile group: 'joda-time', name: 'joda-time', version: '2.9.4'
-
+        compileOnly("com.fasterxml.jackson.core:jackson-databind:2.9.5")
     }
 }

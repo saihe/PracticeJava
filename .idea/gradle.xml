@@ -10,6 +10,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/annotaion" />
             <option value="$PROJECT_DIR$/wildcard" />
           </set>
         </option>
@@ -28,11 +29,11 @@
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/../sandbox" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/call_api" />
         <option name="gradleHome" value="/usr/local/Cellar/gradle/6.0/libexec" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/../sandbox" />
+            <option value="$PROJECT_DIR$/call_api" />
           </set>
         </option>
         <option name="useQualifiedModuleNames" value="true" />
