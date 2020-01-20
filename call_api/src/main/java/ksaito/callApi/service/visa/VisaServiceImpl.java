@@ -125,7 +125,7 @@ public class VisaServiceImpl implements VisaService {
                 List<NameValuePair> requestParameter = new ArrayList<>();
                 Collections.addAll(
                         requestParameter,
-                        new BasicNameValuePair("alias","256752177888"),
+                        new BasicNameValuePair("alias","254711333888"),
                         new BasicNameValuePair("businessApplicationId","PP")
                 );
                 request.setEntity(new UrlEncodedFormEntity(requestParameter));
@@ -162,7 +162,7 @@ public class VisaServiceImpl implements VisaService {
                             keyStore,
                             keyStorePassword.toCharArray()
                     )
-                    .loadTrustMaterial(new File(trustStorePath), trustStorePassword.toCharArray())
+//                    .loadTrustMaterial(new File(trustStorePath), trustStorePassword.toCharArray())
                     .build();
             // Allow TLSv1.2 protocol only
             SSLConnectionSocketFactory sslSocketFactory = new SSLConnectionSocketFactory(
