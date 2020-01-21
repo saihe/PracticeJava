@@ -6,7 +6,7 @@ logging:
 
 visa:
   baseUrl: https://sandbox.api.visa.com
-  keyStorePath: /Users/saito/Downloads/VisaDirect/ssl/transfer_direct.jks
+  keyStorePath: /Users/saito/Downloads/VisaDirect/ssl/transfer_direct.p12
   keyStorePassword: Password123
   privateKeyPassword: Password123
   trustStorePath: /Users/saito/Downloads/VisaDirect/ssl/transfer_direct.jks

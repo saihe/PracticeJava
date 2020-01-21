@@ -3,17 +3,22 @@ package ksaito.callApi.service.visa;
 import ksaito.callApi.Util;
 import lombok.Setter;
 import org.apache.http.Header;
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpHost;
 import org.apache.http.NameValuePair;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.CredentialsProvider;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.entity.EntityBuilder;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
+import org.apache.http.entity.ContentType;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
@@ -26,10 +31,10 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 
 import javax.net.ssl.SSLContext;
-import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.security.KeyManagementException;
@@ -61,9 +66,10 @@ public class VisaServiceImpl implements VisaService {
 
     @Override
     public void call() {
-        helloWorld();
-        transactionQuery();
+//        helloWorld();
+//        transactionQuery();
         resolve();
+        fundsTransferInquiry();
     }
 
     private void helloWorld () {
@@ -128,9 +134,39 @@ public class VisaServiceImpl implements VisaService {
                         new BasicNameValuePair("alias","254711333888"),
                         new BasicNameValuePair("businessApplicationId","PP")
                 );
-                request.setEntity(new UrlEncodedFormEntity(requestParameter));
+                request.setHeaders(
+                        new Header[]{
+                                new BasicHeader(
+                                        HttpHeaders.AUTHORIZATION,
+                                        "Basic " + HttpHeaders.encodeBasicAuth(userId, password, StandardCharsets.UTF_8)
+                                ),
+                                new BasicHeader(
+                                        HttpHeaders.ACCEPT,
+                                        "application/json,application/octet-stream"
+                                ),
+                                new BasicHeader(
+                                        HttpHeaders.CONTENT_TYPE,
+                                        "application/json"
+                                )
+                        }
+                );
+//                request.setEntity(
+//                        EntityBuilder
+//                                .create()
+//                                .setParameters(requestParameter)
+//                                .setContentEncoding(StandardCharsets.UTF_8.name())
+//                                .setContentType(ContentType.APPLICATION_JSON)
+//                                .build()
+//                );
+                request.setEntity(
+                        new StringEntity(
+                                "{\"alias\": \"74958889999\",\"businessApplicationId\": \"PP\"}",
+                                ContentType.APPLICATION_JSON
+                        )
+                );
                 print("======リクエスト======");
                 print(request.getURI());
+                Arrays.stream(request.getAllHeaders()).forEach(Util::print);
                 print("======リクエストパラメーター======");
                 print(EntityUtils.toString(request.getEntity()));
                 printResponse(client.execute(request));
@@ -146,10 +182,81 @@ public class VisaServiceImpl implements VisaService {
         });
     }
 
+    private void fundsTransferInquiry() {
+        Optional.ofNullable(createClient()).ifPresent(client -> {
+            try {
+                List<NameValuePair> requestParameter = new ArrayList<>();
+                Collections.addAll(
+                        requestParameter,
+                        new BasicNameValuePair("systemsTraceAuditNumber","350420"),
+                        new BasicNameValuePair("retrievalReferenceNumber","401010350420"),
+                        new BasicNameValuePair("primaryAccountNumber","4895142232120006")
+                );
+                HttpPost request = new HttpPost(
+                        new URIBuilder(baseUrl)
+                                .setPath("/paai/fundstransferattinq/v5/cardattributes/fundstransferinquiry")
+                                .build()
+                );
+                request.setHeaders(
+                        new Header[]{
+                                new BasicHeader(
+                                        HttpHeaders.AUTHORIZATION,
+                                        "Basic " + HttpHeaders.encodeBasicAuth(userId, password, StandardCharsets.UTF_8)
+                                ),
+                                new BasicHeader(
+                                        HttpHeaders.ACCEPT,
+                                        "application/json,application/octet-stream"
+                                ),
+                                new BasicHeader(
+                                        HttpHeaders.CONTENT_TYPE,
+                                        "application/json"
+                                )
+                        }
+                );
+//                request.setEntity(new UrlEncodedFormEntity(requestParameter));
+//                request.setEntity(
+//                        EntityBuilder
+//                                .create()
+//                                .setParameters(requestParameter)
+//                                .setContentEncoding(StandardCharsets.UTF_8.name())
+//                                .setContentType(ContentType.APPLICATION_JSON)
+//                                .build()
+//                );
+                request.setEntity(
+                        new StringEntity(
+                                "{\"systemsTraceAuditNumber\": \"350420\",\"retrievalReferenceNumber\": \"401010350420\",\"primaryAccountNumber\": \"4895142232120006\"}",
+                                ContentType.APPLICATION_JSON
+                        )
+                );
+                print("======リクエスト======");
+                print(request.getURI());
+                Arrays.stream(request.getAllHeaders()).forEach(Util::print);
+                print("======リクエストパラメーター======");
+                print(EntityUtils.toString(request.getEntity()));
+                request.setConfig(
+                        RequestConfig
+                                .custom()
+                                .build()
+                );
+                printResponse(client.execute(request));
+            } catch (IOException | URISyntaxException e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    client.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
     private CloseableHttpClient createClient() {
         try {
-            KeyStore keyStore = KeyStore.getInstance("JKS");
+            KeyStore keyStore = KeyStore.getInstance("PKCS12");
             keyStore.load(Files.newInputStream(Paths.get(keyStorePath)), keyStorePassword.toCharArray());
+            KeyStore trustKeyStore = KeyStore.getInstance("JKS");
+            trustKeyStore.load(Files.newInputStream(Paths.get(trustStorePath)), trustStorePassword.toCharArray());
             // Load client certificate into key store
             SSLContext sslcontext = null;
             sslcontext = SSLContexts.custom()
@@ -162,7 +269,11 @@ public class VisaServiceImpl implements VisaService {
                             keyStore,
                             keyStorePassword.toCharArray()
                     )
-//                    .loadTrustMaterial(new File(trustStorePath), trustStorePassword.toCharArray())
+//                    .loadTrustMaterial(Paths.get(trustStorePath).toFile(), trustStorePassword.toCharArray())
+//                    .loadTrustMaterial(
+//                            trustKeyStore,
+//                            null
+//                    )
                     .build();
             // Allow TLSv1.2 protocol only
             SSLConnectionSocketFactory sslSocketFactory = new SSLConnectionSocketFactory(
@@ -176,29 +287,28 @@ public class VisaServiceImpl implements VisaService {
             CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
             credentialsProvider.setCredentials(new AuthScope(httpHost.getHostName(), httpHost.getPort()),
                     new UsernamePasswordCredentials(userId, password));
-            List<Header> headers = new ArrayList<>();
-            headers.add(
-                    new BasicHeader(
-                            HttpHeaders.AUTHORIZATION,
-                            "Basic " + HttpHeaders.encodeBasicAuth(userId, password, Charset.defaultCharset())
-                    )
-            );
-            headers.add(
-                    new BasicHeader(
-                            HttpHeaders.ACCEPT,
-                            "application/json,application/octet-stream"
-                    )
-            );
-            headers.add(
-                    new BasicHeader(
-                            HttpHeaders.CONTENT_TYPE,
-                            "application/json"
-                    )
-            );
+//            List<Header> headers = new ArrayList<>();
+//            headers.add(
+//                    new BasicHeader(
+//                            HttpHeaders.AUTHORIZATION,
+//                            "Basic " + HttpHeaders.encodeBasicAuth(userId, password, Charset.defaultCharset())
+//                    )
+//            );
+//            headers.add(
+//                    new BasicHeader(
+//                            HttpHeaders.ACCEPT,
+//                            "application/json,application/octet-stream"
+//                    )
+//            );
+//            headers.add(
+//                    new BasicHeader(
+//                            HttpHeaders.CONTENT_TYPE,
+//                            "application/json"
+//                    )
+//            );
             return HttpClients.custom()
                     .setSSLSocketFactory(sslSocketFactory)
                     .setDefaultCredentialsProvider(credentialsProvider)
-                    .setDefaultHeaders(headers)
                     .build();
 
         } catch (NoSuchAlgorithmException | KeyManagementException | KeyStoreException | UnrecoverableKeyException | CertificateException | IOException e) {
@@ -207,13 +317,16 @@ public class VisaServiceImpl implements VisaService {
         }
     }
 
-    private void printResponse(CloseableHttpResponse httpResponse) {
+    private void printResponse(CloseableHttpResponse httpResponse) throws IOException {
         if (200 != httpResponse.getStatusLine().getStatusCode()) {
             print("======ステータス======");
             print(httpResponse.getStatusLine());
             print("======ヘッダー======");
             Arrays.stream(httpResponse.getAllHeaders()).forEach(Util::print);
         }
+        HttpEntity httpEntity = httpResponse.getEntity();
+        String entityString = EntityUtils.toString(httpEntity);
+        print(entityString);
         Optional.ofNullable(httpResponse.getEntity()).map(entity -> {
             try {
                 print("======ボディ======");
