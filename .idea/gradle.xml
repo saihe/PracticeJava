@@ -11,6 +11,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/annotaion" />
+            <option value="$PROJECT_DIR$/super_csv_annotation" />
             <option value="$PROJECT_DIR$/wildcard" />
           </set>
         </option>

@@ -12,6 +12,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="PracticeJava.SuperCsvAnnotation.main" target="1.8" />
+      <module name="PracticeJava.SuperCsvAnnotation.test" target="1.8" />
       <module name="sandbox.main" target="1.8" />
       <module name="sandbox.test" target="1.8" />
     </bytecodeTargetLevel>
