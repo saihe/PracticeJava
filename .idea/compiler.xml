@@ -10,6 +10,14 @@
         </processorPath>
         <module name="PracticeJava.wildcard.main" />
       </profile>
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-configuration-processor/2.2.5.RELEASE/3426cb36706915047406da672b7ee9628f5f47d6/spring-boot-configuration-processor-2.2.5.RELEASE.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.16.20/ac76d9b956045631d1561a09289cbf472e077c01/lombok-1.16.20.jar" />
+        </processorPath>
+        <module name="PracticeJava.encrypt.main" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="PracticeJava.SuperCsvAnnotation.main" target="1.8" />
