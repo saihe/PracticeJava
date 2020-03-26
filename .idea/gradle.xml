@@ -10,7 +10,8 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/annotaion" />
+            <option value="$PROJECT_DIR$/annotation" />
+            <option value="$PROJECT_DIR$/call_api" />
             <option value="$PROJECT_DIR$/encrypt" />
             <option value="$PROJECT_DIR$/super_csv_annotation" />
             <option value="$PROJECT_DIR$/wildcard" />

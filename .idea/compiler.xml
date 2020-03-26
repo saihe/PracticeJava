@@ -6,9 +6,10 @@
       <profile name="Gradle Imported" enabled="true">
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-configuration-processor/2.2.2.RELEASE/7287179587c8cb2e469ae5529338e958af9dff75/spring-boot-configuration-processor-2.2.2.RELEASE.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.16.20/ac76d9b956045631d1561a09289cbf472e077c01/lombok-1.16.20.jar" />
         </processorPath>
-        <module name="PracticeJava.wildcard.main" />
+        <module name="PracticeJava.annotation.main" />
       </profile>
       <profile name="Gradle Imported" enabled="true">
         <outputRelativeToContentRoot value="true" />
@@ -18,8 +19,23 @@
         </processorPath>
         <module name="PracticeJava.encrypt.main" />
       </profile>
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.16.20/ac76d9b956045631d1561a09289cbf472e077c01/lombok-1.16.20.jar" />
+        </processorPath>
+        <module name="PracticeJava.wildcard.main" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="annotation.main" target="1.8" />
+      <module name="annotation.test" target="1.8" />
+      <module name="call_api.main" target="1.8" />
+      <module name="call_api.test" target="1.8" />
+      <module name="PracticeJava.annotaion.main" target="1.8" />
+      <module name="PracticeJava.annotaion.test" target="1.8" />
+      <module name="PracticeJava.migration.main" target="1.8" />
+      <module name="PracticeJava.migration.test" target="1.8" />
       <module name="PracticeJava.SuperCsvAnnotation.main" target="1.8" />
       <module name="PracticeJava.SuperCsvAnnotation.test" target="1.8" />
       <module name="sandbox.main" target="1.8" />
