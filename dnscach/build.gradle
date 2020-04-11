@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'ksaito'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+mainClassName='Application'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+jar {
+    applicationDefaultJvmArgs = [
+            '-Dfile.encoding=UTF-8'
+            , '-Droot.level=info'
+    ]
+    manifest {
+        attributes('Main-Class': mainClassName)
+    }
+    from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+}

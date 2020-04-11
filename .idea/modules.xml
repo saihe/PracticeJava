@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/annotation.iml" filepath="$PROJECT_DIR$/.idea/modules/annotation.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/annotation.main.iml" filepath="$PROJECT_DIR$/.idea/modules/annotation.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/annotation.test.iml" filepath="$PROJECT_DIR$/.idea/modules/annotation.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/call_api.main.iml" filepath="$PROJECT_DIR$/.idea/modules/call_api.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/call_api.test.iml" filepath="$PROJECT_DIR$/.idea/modules/call_api.test.iml" />
     </modules>

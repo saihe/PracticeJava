@@ -4,4 +4,7 @@ include 'annotation'
 include 'super_csv_annotation'
 include 'encrypt'
 include 'call_api'
+include 'restrequest'
+include 'dnscach'
+include 'basicrequest'
 

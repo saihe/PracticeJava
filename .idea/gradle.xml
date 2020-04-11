@@ -4,15 +4,21 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
+        <option name="delegatedBuild" value="true" />
+        <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="gradleHome" value="/usr/local/Cellar/gradle/6.0/libexec" />
+        <option name="gradleJvm" value="#JAVA_HOME" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/annotation" />
+            <option value="$PROJECT_DIR$/basicrequest" />
             <option value="$PROJECT_DIR$/call_api" />
+            <option value="$PROJECT_DIR$/dnscach" />
             <option value="$PROJECT_DIR$/encrypt" />
+            <option value="$PROJECT_DIR$/restrequest" />
             <option value="$PROJECT_DIR$/super_csv_annotation" />
             <option value="$PROJECT_DIR$/wildcard" />
           </set>
@@ -20,6 +26,8 @@
         <option name="useQualifiedModuleNames" value="true" />
       </GradleProjectSettings>
       <GradleProjectSettings>
+        <option name="delegatedBuild" value="true" />
+        <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/annotation" />
         <option name="gradleHome" value="/usr/local/Cellar/gradle/6.0/libexec" />
@@ -31,12 +39,27 @@
         <option name="useQualifiedModuleNames" value="true" />
       </GradleProjectSettings>
       <GradleProjectSettings>
+        <option name="delegatedBuild" value="true" />
+        <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/call_api" />
         <option name="gradleHome" value="/usr/local/Cellar/gradle/6.0/libexec" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/call_api" />
+          </set>
+        </option>
+        <option name="useQualifiedModuleNames" value="true" />
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="delegatedBuild" value="true" />
+        <option name="testRunner" value="GRADLE" />
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/restrequest" />
+        <option name="gradleHome" value="/usr/local/Cellar/gradle/6.0/libexec" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/restrequest" />
           </set>
         </option>
         <option name="useQualifiedModuleNames" value="true" />

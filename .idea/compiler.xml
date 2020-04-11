@@ -14,6 +14,13 @@
       <profile name="Gradle Imported" enabled="true">
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.16.20/ac76d9b956045631d1561a09289cbf472e077c01/lombok-1.16.20.jar" />
+        </processorPath>
+        <module name="PracticeJava.wildcard.main" />
+      </profile>
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-configuration-processor/2.2.5.RELEASE/3426cb36706915047406da672b7ee9628f5f47d6/spring-boot-configuration-processor-2.2.5.RELEASE.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.16.20/ac76d9b956045631d1561a09289cbf472e077c01/lombok-1.16.20.jar" />
         </processorPath>
@@ -22,9 +29,10 @@
       <profile name="Gradle Imported" enabled="true">
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-configuration-processor/2.2.6.RELEASE/51c9bff7a5dc15403529a77f5861be643082ecea/spring-boot-configuration-processor-2.2.6.RELEASE.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.16.20/ac76d9b956045631d1561a09289cbf472e077c01/lombok-1.16.20.jar" />
         </processorPath>
-        <module name="PracticeJava.wildcard.main" />
+        <module name="PracticeJava.restrequest.main" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -36,8 +44,12 @@
       <module name="PracticeJava.annotaion.test" target="1.8" />
       <module name="PracticeJava.migration.main" target="1.8" />
       <module name="PracticeJava.migration.test" target="1.8" />
+      <module name="PracticeJava.restrequerst.main" target="1.8" />
+      <module name="PracticeJava.restrequerst.test" target="1.8" />
       <module name="PracticeJava.SuperCsvAnnotation.main" target="1.8" />
       <module name="PracticeJava.SuperCsvAnnotation.test" target="1.8" />
+      <module name="reestrequest.main" target="1.8" />
+      <module name="reestrequest.test" target="1.8" />
       <module name="sandbox.main" target="1.8" />
       <module name="sandbox.test" target="1.8" />
     </bytecodeTargetLevel>
