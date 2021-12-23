@@ -1,0 +1,17 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'ksaito.practice.java'
+version '1.0-SNAPSHOT'
+
+mainClassName='ksaito.practice.java.outerProcess.Application'
+
+repositories {
+    mavenCentral()
+}
+
+jar {
+    manifest.attributes "Main-Class": "${mainClassName}"
+}

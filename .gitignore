@@ -5,5 +5,5 @@ gradlew.bat
 annotation/gradle
 gradle
 workspace.xml
-basicrequest/build
-dnscach/build
+.idea
+build
